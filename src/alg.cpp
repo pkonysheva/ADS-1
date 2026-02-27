@@ -1,4 +1,4 @@
-//Copyright 202 NNTU-CS
+//Copyright 2022 NNTU-CS
 #include <cstdint>
 #include "alg.h"
 
@@ -27,16 +27,11 @@ uint64_t nPrime(uint64_t n) {
 }
 
 uint64_t nextPrime(uint64_t value) {
-    uint64_t num1 = value + 1;
-    while (!checkPrime(num1)) {
-        num1++;
+    uint64_t num = value + 1;
+    while (!checkPrime(num)) {
+        num++;
     }
-    uint64_t num2 = value - 1;
-    while (!checkPrime(num2)) {
-        num2--;
-    }
-    if ((value - num1) > (num2 - value)) return num1;
-    else return num2;
+    return num;
 }
 
 uint64_t sumPrime(uint64_t hbound) {
@@ -50,9 +45,7 @@ uint64_t sumPrime(uint64_t hbound) {
 uint64_t twinPrimes(uint64_t lbound, uint64_t hbound) {
     uint64_t res = 0;
     for (uint64_t i = lbound; i < hbound - 2; i++) {
-        if (checkPrime(i) && checkPrime(i + 2)) {
-            res++;
-        }
+        if (checkPrime(i) && checkPrime(i + 2)) res++;
     }
     return res;
 }
